@@ -32,10 +32,10 @@ const axiosConfig = {
 
 const errorExtraction = (error) => {
   if (error.isAxiosError) {
-    return 'errorNetwork';
+    return errorNetwork;
   }
   if (error.isParserError) {
-    return 'errorResourceNotValid';
+    return errorResourceNotValid;
   }
   return 'errorUnknown';
 };
@@ -117,7 +117,7 @@ export default (() => {
           return;
         }
         checkedState.form.error = '';
-          loading(checkedState, url);
+        loading(checkedState, url);
       });
     }));
     elements.postsColumn.addEventListener('click', (event) => {

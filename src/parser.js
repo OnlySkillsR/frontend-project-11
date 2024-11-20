@@ -6,7 +6,9 @@ const parsingHtml = (data) => {
   const document = parser.parseFromString(data, 'application/xml');
   const rss = document.querySelector('rss');
   if (!document.contains(rss)) {
-    throw new Error('is parser error');
+    const error = new Error('parser error');
+    error.isParserError = true;
+    throw error;
   }
   const feed = {};
   feed.title = rss.querySelector('title').textContent;
