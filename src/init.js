@@ -30,6 +30,8 @@ const axiosConfig = {
   timeout: 10000,
 };
 
+const delay = 5000;
+
 const errorExtraction = (error) => {
   if (error.isAxiosError) {
     return errorNetwork;
@@ -52,7 +54,7 @@ const checkNewPosts = (checkedState) => {
     .catch(() => {}));
   Promise.all(promises)
     .then(() => {
-      setTimeout(() => checkNewPosts(checkedState), 5000);
+      setTimeout(() => checkNewPosts(checkedState), delay);
     });
 };
 
