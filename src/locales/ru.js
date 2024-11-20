@@ -1,5 +1,6 @@
 export default {
   translation: {
+    errorResourceNotValid: 'Ресурс не содержит валидный RSS',
     errorWrongLink: 'Ссылка должна быть валидным URL',
     errorRequired: 'Это поле обязательно для заполнения',
     errorNowUnique: 'RSS уже существует',

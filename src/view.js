@@ -26,7 +26,7 @@ const renderForm = (state, elements, i18nextInstance, value) => {
   }
 };
 
-const loadingRender = (state, elements, i18nextInstance, value) => {
+const renderLoadingProcess = (state, elements, i18nextInstance, value) => {
   const { loadingProcess } = state;
   const { feedback, input, sendButton } = elements;
   if (value === 'succsess') {
@@ -47,7 +47,7 @@ const loadingRender = (state, elements, i18nextInstance, value) => {
   }
 };
 
-const createContent = (title) => {
+const createContentCard = (title) => {
   const card = document.createElement('div');
   const cardBody = document.createElement('div');
   const cardTitle = document.createElement('h2');
@@ -62,11 +62,11 @@ const createContent = (title) => {
   return card;
 };
 
-const renderFeed = (state, i18nextInstance, elements) => {
+const renderColumnFeed = (state, i18nextInstance, elements) => {
   const { feedsColumn } = elements;
   const { feeds } = state;
   if (!feedsColumn.hasChildNodes()) {
-    const card = createContent(i18nextInstance.t('feedsTitle'));
+    const card = createContentCard(i18nextInstance.t('feedsTitle'));
     feedsColumn.append(card);
   }
   const card = feedsColumn.querySelector('.card');
@@ -87,11 +87,11 @@ const renderFeed = (state, i18nextInstance, elements) => {
   list.append(...items);
 };
 
-const renderPosts = (state, i18nextInstance, elements) => {
+const renderColumnPosts = (state, i18nextInstance, elements) => {
   const { postsColumn } = elements;
   const { ui, posts } = state;
   if (!postsColumn.hasChildNodes()) {
-    const card = createContent(i18nextInstance.t('postsTitle'));
+    const card = createContentCard(i18nextInstance.t('postsTitle'));
     postsColumn.append(card);
   }
   const card = postsColumn.querySelector('.card');
@@ -140,16 +140,16 @@ export default (state, i18nextInstance, elements) => (path, value) => {
     renderForm(state, elements, i18nextInstance, value);
   }
   if (path === 'loadingProcess.status') {
-    loadingRender(state, elements, i18nextInstance, value);
+    renderLoadingProcess(state, elements, i18nextInstance, value);
   }
   if (path === 'feeds') {
-    renderFeed(state, i18nextInstance, elements);
+    renderColumnFeed(state, i18nextInstance, elements);
   }
   if (path === 'posts') {
-    renderPosts(state, i18nextInstance, elements);
+    renderColumnPosts(state, i18nextInstance, elements);
   }
   if (path === 'ui.seenPosts') {
     renderModal(state, elements);
-    renderPosts(state, i18nextInstance, elements);
+    renderColumnPosts(state, i18nextInstance, elements);
   }
 };

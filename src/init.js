@@ -117,7 +117,7 @@ export default (() => {
           return;
         }
         checkedState.form.error = '';
-        loading(checkedState, url);
+          loading(checkedState, url);
       });
     }));
     elements.postsColumn.addEventListener('click', (event) => {
