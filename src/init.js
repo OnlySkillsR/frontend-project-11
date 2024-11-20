@@ -32,10 +32,10 @@ const axiosConfig = {
 
 const errorExtraction = (error) => {
   if (error.isAxiosError) {
-    return errorNetwork;
+    return 'errorNetwork';
   }
   if (error.isParserError) {
-    return errorResourceNotValid;
+    return 'errorResourceNotValid';
   }
   return 'errorUnknown';
 };
