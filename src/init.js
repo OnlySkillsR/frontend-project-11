@@ -122,6 +122,7 @@ export default (() => {
     }));
     elements.postsColumn.addEventListener('click', (event) => {
       const { id } = event.target.dataset;
+      event.preventDefault();
       if (id) {
         checkedState.ui.id = id;
         checkedState.ui.seenPosts.add(id);
